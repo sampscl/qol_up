@@ -1,4 +1,4 @@
-defmodule Utils.Mime do
+defmodule QolUp.Mime do
   @moduledoc """
   MIME utilities
   """

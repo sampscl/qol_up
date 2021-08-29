@@ -28,12 +28,7 @@ defmodule QolUp.MixProject do
       preferred_cli_env: [espec: :test],
       deps: deps(),
       aliases: aliases(),
-      releases: [
-        qol_up: [
-          include_executables_for: [:unix],
-          applications: [runtime_tools: :permanent]
-        ]
-      ]
+      package: package()
     ]
   end
 
@@ -59,11 +54,23 @@ defmodule QolUp.MixProject do
     [
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-      {:ex_doc, "~> 0.24", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.25", only: :dev, runtime: false},
       {:espec, "~> 1.8", only: :test},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:briefly, "~> 0.3", only: :test},
       {:shorter_maps, "~> 2.2"},
-      {:yaml_elixir, "~> 2.7"}
+      {:yaml_elixir, "~> 2.7"},
+      {:file_system, "~> 0.2"}
+    ]
+  end
+
+  defp package do
+    [
+      description: "Utilities for quality of life upgrades",
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/sampscl/qol_up"},
+      homepage_url: "https://github.com/sampscl/qol_up",
+      source_url: "https://github.com/sampscl/qol_up"
     ]
   end
 end

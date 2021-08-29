@@ -27,3 +27,6 @@ qol_up-*.tar
 
 # IDE
 *.code-workspace
+.elixir_ls
+# Keep .vscode dir for consistent formatting
+# .vscode
