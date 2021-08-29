@@ -1,4 +1,5 @@
 %{
+  "briefly": {:hex, :briefly, "0.3.0", "16e6b76d2070ebc9cbd025fa85cf5dbaf52368c4bd896fb482b5a6b95a540c2f", [:mix], [], "hexpm", "c6ebf8fc3dcd4950dd10c03e953fb4f553a8bcf0ff4c8c40d71542434cd7e046"},
   "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm", "7af5c7e09fe1d40f76c8e4f9dd2be7cebd83909f31fee7cd0e9eadc567da8353"},
   "credo": {:hex, :credo, "1.5.6", "e04cc0fdc236fefbb578e0c04bd01a471081616e741d386909e527ac146016c6", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}, {:file_system, "~> 0.2.8", [hex: :file_system, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: false]}], "hexpm", "4b52a3e558bd64e30de62a648518a5ea2b6e3e5d2b164ef5296244753fc7eb17"},
   "earmark_parser": {:hex, :earmark_parser, "1.4.15", "b29e8e729f4aa4a00436580dcc2c9c5c51890613457c193cc8525c388ccb2f06", [:mix], [], "hexpm", "044523d6438ea19c1b8ec877ec221b008661d3c27e3b848f4c879f500421ca5c"},

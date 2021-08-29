@@ -62,8 +62,10 @@ defmodule QolUp.MixProject do
       {:ex_doc, "~> 0.24", only: :dev, runtime: false},
       {:espec, "~> 1.8", only: :test},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:briefly, "~> 0.3", only: :test},
       {:shorter_maps, "~> 2.2"},
-      {:yaml_elixir, "~> 2.7"}
+      {:yaml_elixir, "~> 2.7"},
+      {:file_system, "~> 0.2"}
     ]
   end
 end
