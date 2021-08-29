@@ -1,12 +1,6 @@
 defmodule QolUp.ConfigFile do
   @moduledoc """
-  GenServer that reads from config files,
-  knowing which settings are stored in which config files. This
-  must be started after the settings genserver because it looks
-  up the base directory for the config file location in Settings.
-
-  Note that some settings can be overridden with environment
-  variables, see the function docs for details.
+  GenServer that reads from a config file.
   """
 
   use GenServer
@@ -103,10 +97,10 @@ defmodule QolUp.ConfigFile do
   Start the genserver
 
   ## Parameters
-  - `opts`, an `opts_list()`
-    - {:name, atom()} Name to give the GenServer; if not specified, then the `QolUp.ConfigFile` is used.
-    - {:config_file, String.t} Path to the config file to load, required
-    - {:watch_fs, boolean()} Whether (true) or not to watch the config file and automatically reload it when it changes, defaults to false
+  - `opts`, an `opts_list()`:
+    * name Name to give the GenServer; if not specified, then `QolUp.ConfigFile` is used.
+    * config_file Path to the config file to load, required
+    * watch_fs Whether (true) or not to watch the config file and automatically reload it when it changes, defaults to false
 
   ## Returns
   - See `GenServer.start_link/3`
@@ -115,7 +109,9 @@ defmodule QolUp.ConfigFile do
     do: GenServer.start_link(__MODULE__, opts, name: Keyword.get(opts, :name, __MODULE__))
 
   defmodule State do
-    @moduledoc false
+    @moduledoc """
+    State structure for the GenServer.
+    """
     defstruct [
       # the config
       cfg: %{},
@@ -182,6 +178,7 @@ defmodule QolUp.ConfigFile do
   ##############################
 
   @spec do_init(State.t()) :: State.t()
+  @doc false
   def do_init(~M{config_file, watch_fs} = state) do
     {cfg_state, result} = do_parse_config_file(state)
     L.debug("Initial config parse result: #{inspect(result, pretty: true)}")
@@ -196,6 +193,7 @@ defmodule QolUp.ConfigFile do
     end
   end
 
+  @doc false
   def do_parse_config_file(~M{config_file} = state) do
     case YamlElixir.read_from_file(config_file) do
       {:ok, cfg} ->
@@ -207,8 +205,10 @@ defmodule QolUp.ConfigFile do
     end
   end
 
+  @doc false
   def do_get_item(state, item) when not is_list(item), do: do_get_item(state, List.wrap(item))
 
+  @doc false
   def do_get_item(~M{cfg} = state, item) do
     case get_in(cfg, item) do
       nil -> {state, {:error, :not_found}}
@@ -216,15 +216,18 @@ defmodule QolUp.ConfigFile do
     end
   end
 
+  @doc false
   def do_put_item(state, item, value) when not is_list(item),
     do: do_put_item(state, List.wrap(item), value)
 
+  @doc false
   def do_put_item(~M{cfg} = state, item, value) do
     updated_cfg = put_in(cfg, item, value)
     {~M{state| cfg: updated_cfg}, :ok}
   end
 
   @spec do_handle_file_events(State.t(), String.t(), list(atom())) :: State.t()
+  @doc false
   def do_handle_file_events(~M{config_file} = state, path, events) do
     L.locals()
 
