@@ -10,13 +10,7 @@ defmodule QolUp.MixProject do
   - version `String.t`
   """
   def version do
-    "git describe"
-    |> System.shell(cd: Path.dirname(__ENV__.file))
-    |> then(fn
-      {version, 0} -> Regex.replace(~r/^[[:alpha:]]*/, String.trim(version), "")
-      {_barf, _exit_code} -> System.get_env("version", "1.0.2")
-    end)
-    |> tap(&IO.puts("Version: #{&1}"))
+    "1.0.3"
   end
 
   def project do
