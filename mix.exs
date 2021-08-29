@@ -14,7 +14,7 @@ defmodule QolUp.MixProject do
     |> System.shell(cd: Path.dirname(__ENV__.file))
     |> then(fn
       {version, 0} -> Regex.replace(~r/^[[:alpha:]]*/, String.trim(version), "")
-      {_barf, _exit_code} -> System.get_env("version", "0.0.0-UNKNOWN")
+      {_barf, _exit_code} -> System.get_env("version", "1.0.2")
     end)
     |> tap(&IO.puts("Version: #{&1}"))
   end
