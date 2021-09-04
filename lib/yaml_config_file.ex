@@ -1,4 +1,4 @@
-defmodule QolUp.ConfigFile do
+defmodule QolUp.YamlConfigFile do
   @moduledoc """
   GenServer that reads from a config file.
   """
