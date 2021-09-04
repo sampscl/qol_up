@@ -10,7 +10,7 @@ defmodule QolUp.MixProject do
   - version `String.t`
   """
   def version do
-    "1.0.3"
+    "1.1.0"
   end
 
   def project do
